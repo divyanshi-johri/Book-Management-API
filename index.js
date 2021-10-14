@@ -19,14 +19,14 @@ const booky = express();
 booky.use(bodyParser.urlencoded({ extended: true }));
 booky.use(bodyParser.json());
 
-mongoose
-    .connect("mongodb+srv://divuuu:adish@myfirstdb.txu8s.mongodb.net/Booky?retryWrites=true&w=majority", {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false,
-        useCreateIndex: true,
-    })
-    .then(() => console.log('connection established'));
+mongoose.connect(process.env.MONGO_URL,
+{
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
+}).then(()=>console.log("connection established"));
+
 
 /*
 Route             /
